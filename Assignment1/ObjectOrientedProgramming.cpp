@@ -5,6 +5,12 @@ using namespace std;
 class coreMembers
 {
     //access specifier
+    private:
+
+    //data members
+    string password;
+    
+    //access specifier
     public:
 
     //data members
@@ -15,12 +21,6 @@ class coreMembers
     string mobileNumber;
     string areaOfSpecialization;
     vector <string> coordinators;
-
-    //access specifier
-    private:
-
-    //data members
-    string password;
 
     //member functions
     void displayDetails()
