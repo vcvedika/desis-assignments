@@ -3,79 +3,123 @@ using namespace std;
 
 class organisers
 {
-    public:
-        string studentID;
-        string username;
-        string name;
-        int age;
-        string mobileNumber;
+public:
+    string studentID;
+    string username;
+    string name;
+    int age;
+    string mobileNumber;
+    vector<string> activities;
 
-        void display_basic()
-        {
-            cout<<"The details are as follows: "<<endl;
-            cout<<"Name: "<<name<<endl;
-            cout<<"Age: "<<age<<endl;
-            cout<<"Mobile Number: "<<mobileNumber<<endl;
-        }
+    organisers()
+    {
+        cout << "The details are as follows: " << endl;
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "Mobile Number: " << mobileNumber << endl;
+    }
 };
 
-
-class coreMembers: public organisers
+class coreMembers : public organisers
 {
-    private:
-        string password;
+private:
+    string password;
 
-    public:
-        string areaOfSpecialization;
-        vector <string> coordinators;
-       
-        void display()
+public:
+    // string areaOfSpecialization;
+    vector<coordinator> coordinators;
+
+    coreMembers(string areaOfSpec)
+    {
+        activities[0] = areaOfSpec;
+        coordinators = coordin;
+
+        cout << "Area of Specialization: " << activities[0] << endl;
+        cout << "The names of the coordinators under the Core Member are: " << endl;
+        for (int i = 0; i < coordinators.size(); i++)
         {
-            display_basic();
-            cout<<"Area of Specialization: "<<areaOfSpecialization<<endl;
-
-            cout<<"The names of the coordinators under the Core Member are: "<<endl;
-
-            for(int i=0; i<coordinators.size(); i++)
-            {
-                cout<<i+1<<") ";
-                cout<<coordinators[i]<<endl;
-            }
+            cout << i + 1 << ") ";
+            cout << coordinators[i] << endl;
         }
+    }
+
+    void setPassword(string pswrd)
+    {
+        password = pswrd;
+    }
 };
 
-
-class workforce: public organisers
+class workforce : public organisers
 {
-    private:
-        string password;
-    
-    public:
-        vector <string> coordinators_you_report_to;
-        vector <string> activities;
+private:
+    string password;
 
-        void display()
+public:
+    vector<coordinator> coordinators_you_report_to;
+
+    workforce()
+    {
+        cout << "Activities you are a part of: " << endl;
+        for (int i = 0; i < activities.size(); i++)
         {
-            display_basic();
-            cout<<"Activities you are a part of: "<<endl;
-            for(int i=0; i<activities.size(); i++)
-            {
-                cout<<i+1<<") ";
-                cout<<activities[i]<<endl;
-            }
-
-            cout<<"Coordinators you report to: "<<endl;
-            for(int i=0; i<coordinators_you_report_to.size(); i++)
-            {
-                cout<<i+1<<") ";
-                cout<<coordinators_you_report_to[i]<<endl;
-            }
+            cout << i + 1 << ") ";
+            cout << activities[i] << endl;
         }
+
+        cout << "Coordinators you report to: " << endl;
+        for (int i = 0; i < coordinators_you_report_to.size(); i++)
+        {
+            cout << i + 1 << ") ";
+            cout << coordinators_you_report_to[i] << endl;
+        }
+    }
+
+    void setPassword(string pswrd)
+    {
+        password = pswrd;
+    }
 };
 
+class coordinator : public organizers
+{
+private:
+    string password;
+
+public:
+    vector<coreMembers> core_members_you_report_to;
+    vector<workforce> workforce_under_you;
+
+    coordinator()
+    {
+        cout << "Activities you are a part of: " << endl;
+        for (int i = 0; i < activities.size(); i++)
+        {
+            cout << i + 1 << ") ";
+            cout << activities[i] << endl;
+        }
+
+        cout << "Core Members you report to: " << endl;
+        for (int i = 0; i < core_members_you_report_to.size(); i++)
+        {
+            cout << i + 1 << ") ";
+            cout << core_members_you_report_to[i] << endl;
+        }
+
+        cout << "Workforce working under you: " << endl;
+        for (int i = 0; i < workforce_under_you.size(); i++)
+        {
+            cout << i + 1 << ") ";
+            cout << workforce_under_you[i] << endl;
+        }
+    }
+
+    void setPassword(string pswrd)
+    {
+        password = pswrd;
+    }
+};
 
 int main()
 {
-    //Instantiating the classes
+    // Instantiating the classes
 }
-
