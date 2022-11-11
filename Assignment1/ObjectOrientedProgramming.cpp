@@ -1,6 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+class participant
+{
+private:
+    string password;
+public:
+    string name;
+    string registrationID;
+    vector<string> events;
+    string mobileNumber;
+    int year;
+    string mailID;
+    
+    participant()
+    {
+        cout << "The details are as follows: " << endl;
+        cout << "Name: " << name << endl;
+        cout << "Registration ID: " << registrationID << endl;
+        cout << "Year: " << year << endl;
+        cout <<"Mobile number: "<< mobileNumber << endl;
+        cout <<"Mail ID: "<< mailID << endl;
+        cout << "The names of the events registered for are: " << endl;
+        for (int i = 0; i < events.size(); i++)
+        {
+            cout << i + 1 << ") ";
+            cout << events[i] << endl;
+        }
+    }
+    
+    void setPassword(string pswrd)
+    {
+        password = pswrd;
+    }
+};
+    
 class organisers
 {
 public:
