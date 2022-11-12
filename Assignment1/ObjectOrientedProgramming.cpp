@@ -13,9 +13,19 @@ public:
     int year;
     string mailID;
     
-    participant()
+    participant(string name, string registrationID, vector<string> events, string MobNo, int y, string email)
     {
-        cout << "The details are as follows: " << endl;
+        this->name=name;
+        this->registrationID=registrationID;
+        events=events;
+        mobileNumber= MobNo;
+        year=y;
+        mailID=email;
+    }
+    
+    void displayInfo()
+    {
+        cout << "The participant details are as follows: "<< endl;
         cout << "Name: " << name << endl;
         cout << "Registration ID: " << registrationID << endl;
         cout << "Year: " << year << endl;
