@@ -1,26 +1,34 @@
-#include <bits/stdc++.h>
+#include <vector>
+#include <string>
+#include <iostream>
 using namespace std;
 
 class participant
 {
 private:
     string password;
+
+public:
     string name;
     string registrationID;
-    vector<string> events;
+    // vector <string> events;
+    const char *events[5] = {"Prayer Ceremony", "Orientation", "Dance", "Do's and Don't", "Conclusion"};
     string mobileNumber;
     int year;
     string mailID;
 
-public:
-    participant(string name, string registrationID, vector<string> events, string MobNo, int y, string email)
+    participant(string registrationID, string name, string MobNo, int y, string email)
     {
         this->name = name;
         this->registrationID = registrationID;
-        events = events;
         mobileNumber = MobNo;
         year = y;
         mailID = email;
+    }
+
+    void setPassword(string pswrd)
+    {
+        password = pswrd;
     }
 
     void displayInfo()
@@ -31,17 +39,13 @@ public:
         cout << "Year: " << year << endl;
         cout << "Mobile number: " << mobileNumber << endl;
         cout << "Mail ID: " << mailID << endl;
+        cout << "Your password is " << password << endl;
         cout << "The names of the events registered for are: " << endl;
-        for (int i = 0; i < events.size(); i++)
+
+        for (int i = 0; i < 5; i++)
         {
-            cout << i + 1 << ") ";
             cout << events[i] << endl;
         }
-    }
-
-    void setPassword(string pswrd)
-    {
-        password = pswrd;
     }
 };
 
@@ -49,18 +53,19 @@ class organisers
 {
 protected:
     string studentID;
-    string username;
     string name;
     int age;
     string mobileNumber;
     string password;
     vector<string> activities;
 
+public:
     organisers() {}
 
     void displayInfoOrg()
     {
         cout << "The details are as follows: " << endl;
+        cout << "Student ID: " << studentID << endl;
         cout << "Name: " << name << endl;
         cout << "Age: " << age << endl;
         cout << "Mobile Number: " << mobileNumber << endl;
@@ -78,8 +83,12 @@ private:
     vector<string> coordinators; // try using class coordinator
 
 public:
-    coreMembers(string areaOfSpecialization, vector<string> &coords)
+    coreMembers(string studID, string n, int a, string phno, string areaOfSpecialization, vector<string> &coords)
     {
+        studentID = studID;
+        name = n;
+        age = a;
+        mobileNumber = phno;
         activities[0] = areaOfSpecialization;
         coordinators = coords;
     }
@@ -103,8 +112,12 @@ private:
     vector<string> coordinators_you_report_to;
 
 public:
-    workforce(vector<string> &coords, vector<string> &activity)
+    workforce(string studID, string n, int a, string phno, vector<string> &coords, vector<string> &activity)
     {
+        studentID = studID;
+        name = n;
+        age = a;
+        mobileNumber = phno;
         activities = activity;
         coordinators_you_report_to = coords;
     }
@@ -134,8 +147,13 @@ private:
     vector<string> core_members_you_report_to;
     vector<string> workforce_under_you;
 
-    coordinator(vector<string> &cores, vector<string> &activity, vector<string> &workers)
+public:
+    coordinator(string studID, string n, int a, string phno, vector<string> &cores, vector<string> &activity, vector<string> &workers)
     {
+        studentID = studID;
+        name = n;
+        age = a;
+        mobileNumber = phno;
         core_members_you_report_to = cores;
         workforce_under_you = workers;
         activities = activity;
@@ -169,5 +187,40 @@ private:
 
 int main()
 {
-    cout << "Welcome to our College Fest!!";
+    cout << "Welcome to our event" << endl;
+    cout << "D. E. Shaw & Co., L.P. is a multinational investment management firm founded in 1988 by David E. Shaw and based in New York City" << endl;
+    cout << "The company is known for developing complicated mathematical models and sophisticated computer programs to exploit anomalies in the financial market." << endl;
+
+    // participants
+    participant participants("EHo0467", "imaname1", "9999999999", 2021, "imanemail@email.com");
+    participants.setPassword("IAMPASSWORD1");
+    participants.displayInfo();
+    cout << endl;
+
+    vector<string> activitieslist;
+    activitieslist = {"Preconference WorkShop ", "Consortia General Sessions", "Esummit Orientation"};
+
+    // workforces
+    vector<string> coordinators_you_report_to;
+    coordinators_you_report_to = {"Mr Vivek", "Miss Harshitha", "Miss Shalini", "Mr. Madhukiran"};
+    workforce workforcemember("EHo0468", "imaname2", 20, "9999999999", coordinators_you_report_to, activitieslist);
+    workforcemember.setPassword("IAMPASSWORD2");
+    workforcemember.displayInfo();
+    cout << endl;
+
+    // coordinators
+    vector<string> coreMembers_name = {"Mrs Shah", "Mr Rahul", "Miss John"};
+    vector<string> workforce_under_you = {"Hardik", "Parth", "Palash"};
+    coordinator coordinator1("EHo0469", "imaname3", 20, "9999999999", coreMembers_name, activitieslist, workforce_under_you);
+    coordinator1.setPassword("IAMPASSWORD3");
+    coordinator1.displayInfo();
+    cout << endl;
+
+    // coreMembers
+    string arOfSpec = "Public Relations";
+    vector<string> coordMember_name = {"Miss Vedika", "Miss Saoumi", "Miss Astha", "Miss Dakshitha"};
+    coreMembers coreMembers1("EHo0470", "imaname4", 20, "9999999999", arOfSpec, coordMember_name);
+    coreMembers1.setPassword("IAMPASSWORD3");
+    coreMembers1.displayInfo();
+    cout << endl;
 }
