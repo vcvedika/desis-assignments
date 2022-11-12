@@ -3,9 +3,10 @@ using namespace std;
 
 class participant
 {
-private:
+    private:
     string password;
-public:
+    
+    public:
     string name;
     string registrationID;
     vector<string> events;
@@ -47,13 +48,12 @@ public:
     
 class organisers
 {
-public:
+    public:
     string studentID;
     string username;
     string name;
     int age;
     string mobileNumber;
-    vector<string> activities;
 
     organisers()
     {
@@ -66,19 +66,15 @@ public:
 
 class coreMembers : public organisers
 {
-private:
+    private:
     string password;
+    
+    public:
+    vector <string> coordinators;
 
-public:
-    // string areaOfSpecialization;
-    vector<coordinator> coordinators;
-
-    coreMembers(string areaOfSpec)
+    coreMembers(string areaOfSpecialization)
     {
-        activities[0] = areaOfSpec;
-        coordinators = coordin;
-
-        cout << "Area of Specialization: " << activities[0] << endl;
+        cout << "Area of Specialization: " << areaOfSpecialization << endl;
         cout << "The names of the coordinators under the Core Member are: " << endl;
         for (int i = 0; i < coordinators.size(); i++)
         {
@@ -95,11 +91,12 @@ public:
 
 class workforce : public organisers
 {
-private:
+    private:
     string password;
-
-public:
-    vector<coordinator> coordinators_you_report_to;
+    
+    public:
+    vector <string> activities;
+    vector <string> coordinators_you_report_to;
 
     workforce()
     {
@@ -124,14 +121,15 @@ public:
     }
 };
 
-class coordinator : public organizers
+class coordinator : public organisers
 {
-private:
+    private:
     string password;
-
-public:
-    vector<coreMembers> core_members_you_report_to;
-    vector<workforce> workforce_under_you;
+    
+    public:
+    vector <string> activities;
+    vector <string> core_members_you_report_to;
+    vector <string> workforce_under_you;
 
     coordinator()
     {
