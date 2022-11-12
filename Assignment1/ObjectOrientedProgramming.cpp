@@ -9,19 +9,19 @@ class participant
     public:
     string name;
     string registrationID;
-    vector<string> events;
+    vector <string> events;
     string mobileNumber;
     int year;
     string mailID;
     
     participant(string name, string registrationID, vector<string> events, string MobNo, int y, string email)
     {
-        this->name=name;
-        this->registrationID=registrationID;
-        events=events;
-        mobileNumber= MobNo;
-        year=y;
-        mailID=email;
+        this->name = name;
+        this->registrationID = registrationID;
+        events = events;
+        mobileNumber = MobNo;
+        year = y;
+        mailID = email;
     }
     
     void displayInfo()
